@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Student{
+    private:
+        int marks;
+    public:
+        void setmarks(int m){
+            if(m >= 0 && m <= 100){
+                marks = m;
+            }
+        }
+
+        int getmarks(){
+            return marks;
+        }
+};
+int main(){
+    Student s;
+    s.setmarks(100);
+    cout << "Marks : " << s.getmarks() << endl;
+    return 0;
+}
