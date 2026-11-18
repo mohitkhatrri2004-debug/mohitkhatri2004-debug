@@ -1,11 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-int foundIndex = -1;
 void findValue(int arr[],int value,int &n){
     for(int i=0;i<n;i++){
         if(arr[i] == value){
             cout << "Element found at : " << i << endl;
-            foundIndex = i;
             break;
         }
     }

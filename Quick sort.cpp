@@ -4,7 +4,7 @@ int partition(int arr[], int st, int end){
     int idx = st-1 , pivot = arr[end];
     for(int i=st;i<end;i++){
         if(arr[i] <= pivot){
-            idx++;
+            idx++; 
             swap(arr[i],arr[idx]);
         }
     }

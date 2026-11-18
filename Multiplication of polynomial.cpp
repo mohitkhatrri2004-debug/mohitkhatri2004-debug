@@ -35,25 +35,23 @@ public:
         temp -> next = newNode;
     }
 
-    Node* multiplication(Node* p1, Node* p2){
-        Node* result = NULL;
+   Node* Multiplication(Node* p1,Node* p2){
+    Node* result = NULL;
+    Node* first = p1;
+    while(first != NULL){
+        Node* second = p2;
 
-        Node* first = p1;
+        while(second != NULL){
+            int newcoef = first->coef * second->coef;
+            int newexp = first->exp + second->exp;
+            push_back(result,newcoef,newexp);
 
-        while(first != NULL){
-            Node* second = p2;
-
-            while(second != NULL){
-                int newcoef = first->coef * second->coef;
-                int newexp = first->exp + second->exp;
-
-                push_back(result,newcoef,newexp);
-                second = second->next;
-            }
-            first = first->next;
+            second = second -> next;
         }
-        return result;
+        first = first->next;
     }
+    return result;
+   }
     void display(Node* head){
         while(head != NULL){
             cout << head->coef << "x^" << head->exp << " ";
@@ -80,7 +78,7 @@ int main(){
     ll.push_back(p2,3,3);
     ll.push_back(p2,4,2);
 
-    Node* Multiply = ll.multiplication(p1,p2);
+    Node* Multiply = ll.Multiplication(p1,p2);
     ll.display(p1);
      ll.display(p2);
       ll.display(Multiply);

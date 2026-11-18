@@ -1,32 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
-int main(){
-    string s ="abcabcbb";
-    int maxlength = 0;
-    for(int i=0;i<s.length();i++){
-        for(int j=i;j<s.length();j++){
-            string sub = s.substr(i,j-i+1);
-
-            bool duplicate = false;
-
-            for(int x=0;x<sub.length();x++){
-                for(int y=x+1;y<sub.length();y++){
-                    if(sub[x] == sub[y]){
-                        duplicate = true;
-                        break;
-                    }
-                }
-                if(duplicate){
-                    break;
-                }
-            }
-            if(!duplicate){
-                if(sub.length() > maxlength){
-                    maxlength = sub.length();
-                }
-            }
+int foundIndex = -1;
+void findValue(int arr[],int value,int &n){
+    for(int i=0;i<n;i++){
+        if(arr[i] == value){
+            cout << "Element found at : " << i << endl;
+            foundIndex = i;
+            break;
         }
     }
-    cout << maxlength << endl;
+}
+int main(){
+    int arr[] = {1,2,3,4,5,6};
+    int value = 4;
+    int n = 6;
+    findValue(arr,value,n);
     return 0;
 }

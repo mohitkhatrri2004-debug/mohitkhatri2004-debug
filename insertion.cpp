@@ -12,7 +12,7 @@ void deletion(int arr[],int idx,int &n){
         arr[i] = arr[i+1];
     }
     n--;
-}
+}//1 2 3 4 5
 int main(){
     int arr[] = {15,13,14,12,11};
     int n = 5;

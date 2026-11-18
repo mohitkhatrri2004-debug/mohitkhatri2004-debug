@@ -19,48 +19,49 @@ public:
         head = tail = NULL;
     }
 
-    void push_back(Node*& head, int coeff, int exp) {
-    if (coeff == 0) return;
+    void push_back(Node* &head, int coef,int exp){
+        if(coef == 0) return;
 
-    Node* newNode = new Node(coeff, exp);
+        Node* newNode = new Node(coef,exp);
 
-    if (head == nullptr) {
-        head = newNode;
-        return;
-    }
-
-    Node* temp = head;
-    while (temp->next != nullptr)
-        temp = temp->next;
-
-    temp->next = newNode;
-}
-
-    Node* addpolymers(Node* p1 , Node* p2){
-        Node* result = NULL;
-        while(p1 != NULL && p2 != NULL){
-        if(p1 -> exp > p2 -> exp){
-            push_back(result , p1->coef , p1->exp);
-            p1 = p1->next;
-        }else if(p2->exp > p1->exp){
-            push_back(result,p2->coef,p2->exp);
-            p2 = p2->next;
-        }else{
-            push_back(result,p1->coef + p2->coef , p1->exp);
-            p1 = p1->next;
-            p2 = p2->next;
+        if(head == NULL){
+            head = newNode;
+            return;
         }
+
+        Node* temp = head;
+        while(temp -> next != NULL){
+            temp = temp->next;
+        }
+        temp->next = newNode;
     }
-    while(p1 != NULL){
-        push_back(result,p1->coef,p1->exp);
-        p1 = p1->next;
+
+    Node* addpolymers(Node* p1, Node* p2){
+        Node* result = NULL;
+
+        while(p1 != NULL && p2 != NULL){
+            if(p1->exp > p2->exp){
+                push_back(result,p1->coef,p1->exp);
+                p1 = p1->next;
+            }else if(p2->exp > p1->exp){
+                push_back(result,p2->coef,p2->exp);
+                p2 = p2->next;
+            }else{
+                push_back(result,p1->coef + p2->coef,p1->exp);
+                p1 = p1->next;
+                p2 = p2->next;
+            }
+        }
+        while(p1 != NULL){
+            push_back(result,p1->coef,p1->exp);
+                p1 = p1->next;
+        }
+        while(p2 != NULL){
+            push_back(result,p2->coef,p2->exp);
+                p2 = p2->next;
+        }
+        return result;
     }
-    while(p2 != NULL){
-        push_back(result,p2->coef,p2->exp);
-        p2 = p1->next;
-    }
-    return result;
-}
     
     void display(Node* head) {
     while (head != nullptr) {
